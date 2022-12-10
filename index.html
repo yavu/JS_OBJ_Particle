@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>obj-Particle</title>
+    <link href="yv_menu/style.css" media="all" rel="stylesheet">
+    <script type="text/javascript" src="yv_menu/script.js"></script>
+
+    <link href="style/index.css" media="all" rel="stylesheet">
+    <script type="text/javascript" src="script/index.js"></script>
+</head>
+
+<body>
+    <main>
+
+
+
+
+
+        <div class="left">
+            <div class="outliner">
+                <span class="label">Outliner</span>
+                <div class="outliner_wrapper" id="outliner">
+                    <!--
+                        <a class="yv_menu yv_menu_button outliner_file" onclick="">
+                            <div class="yv_menu_icon">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px"height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><g id="layer1"><g><path fill="#FFFFFF" d="M55.946,12L88,44.054V88H12V12H55.946 M60.917,0H6C2.687,0,0,2.687,0,6v88c0,3.313,2.687,6,6,6h88c3.313,0,6-2.687,6-6V39.083L60.917,0L60.917,0z"/></g><path fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linejoin="round" stroke-miterlimit="10" d="M100,49.732H59.153c-4.907,0-8.886-3.978-8.886-8.884V0"/></g></svg>
+                            </div>
+                            <span>Cube</span>
+                        </a>
+                        <a class="yv_menu yv_menu_button outliner_object" onclick="">
+                            <div class="yv_menu_icon">
+                                <svg version="1.1" id="layer1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" cx="50" cy="10.319" r="8.178"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" cx="84.365" cy="30.16" r="8.178"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" cx="84.365" cy="69.841" r="8.179"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" cx="50" cy="89.681" r="8.179"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" cx="15.637" cy="69.841" r="8.179"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" cx="15.637" cy="30.16" r="8.178"/></svg>
+                            </div>
+                            <span>Cube</span>
+                        </a>
+                    -->
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="center">
+            <div class="file">
+                <span class="label">Import</span>
+                <div class="file_input">
+                    <label class="yv_menu yv_menu_file">
+                        <span>Import OBJ</span>
+                        <input type="file" onchange="file_changed(this);" />
+                    </label>
+                </div>
+            </div>
+
+            <div class="preview">
+                <span class="label">Preview</span>
+                <div class="preview_wrapper">
+                    <!--
+                    <textarea id="text_preview" class="yv_menu yv_menu_textarea" id="output" name="textarea" disabled></textarea>
+                    -->
+
+                    <div id="text_preview" class="yv_menu">
+                    </div>
+
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span>Command</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);">Command</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);">3D View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="export">
+                <span class="label">Export</span>
+                <div class="export_button">
+                    <a class="yv_menu yv_menu_button" onclick=""><span>mcfunction</span></a>
+                    <a class="yv_menu yv_menu_button" onclick=""><span>clipboard</span></a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="input_menu">
+
+            <div class="particle">
+                <div class="header">
+                    <span class="label">Particle</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="particle_inherit">Inherit</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('inherit','particle');">Inherit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('individ','particle');">Individ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="particle_input">
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="particle">end_rod</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">ambient_entity_effect</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">angry_villager</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">ash</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">block</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">block_marker</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">bubble</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">bubble_column_up</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">bubble_pop</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">campfire_cosy_smoke</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">campfire_signal_smoke</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">cloud</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">comdeltater</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">crimson_spore</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">crit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">current_down</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">damage_indicator</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dolphin</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dragon_breath</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dripping_dripstone_lava</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dripping_dripstone_water</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dripping_honey</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dripping_lava</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dripping_obsidian_tear</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dripping_water</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dust</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">dust_color_transition</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">effect</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">elder_guardian</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">electric_spark</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">enchant</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">enchanted_hit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">end_rod</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">entity_effect</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">explosion</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">explosion_emitter</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_dripstone_lava</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_dripstone_water</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_dust</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_honey</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_lava</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_nectar</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_obsidian_tear</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_spore_blossom</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">falling_water</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">firework</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">fishing</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">flame</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">flash</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">glow</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">glow_squid_ink</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">happy_villager</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">heart</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">instant_effect</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">item</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">item_slime</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">item_snowball</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">landing_honey</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">landing_lava</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">landing_obsidian_tear</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">large_smoke</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">lava</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">mycelium</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">nautilus</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">note</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">poof</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">portal</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">rain</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">reverse_portal</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">scrape</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">sculk_charge_pop</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">sculk_soul</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">smoke</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">sneeze</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">snowflake</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">soul</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">soul_fire_flame</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">spit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">splash</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">spore_blossom_air</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">squid_ink</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">sweep_attack</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">totem_of_undying</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">underwater</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">vibration</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">warped_spore</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">wax_off</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">wax_on</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">white_ash</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);particle_changed(this);">witch</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="particle_option" id="dust_input">
+                        <label for="color" onclick="" class="yv_menu yv_menu_color">
+                            <div id="dust_color">
+                                <input id="color" type="color" onchange="yv_menu_color(this);color_changed(this);" />
+                            </div>
+                        </label>
+                        <div class="yv_menu yv_menu_number" onclick="dust_size_changed(this.firstElementChild);">
+                            <input id="dust_size" type="number" min="0" max="4" placeholder="" step="0.01" autocomplete="off" value="1" onchange="yv_menu_number(this);dust_size_changed(this);">
+                            <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="particle_option" id="dust_transition_input">
+                        <label for="color1" onclick="" class="yv_menu yv_menu_color">
+                            <div id="dust_transition_color1">
+                                <input id="color1" type="color" onchange="yv_menu_color(this);color_changed(this);" />
+                            </div>
+                        </label>
+                        <label for="color2" onclick="" class="yv_menu yv_menu_color">
+                            <div id="dust_transition_color2">
+                                <input id="color2" type="color" onchange="yv_menu_color(this);color_changed(this);" />
+                            </div>
+                        </label>
+                        <div class="yv_menu yv_menu_number" onclick="dust_size_changed(this.firstElementChild);">
+                            <input id="dust_transition_size" type="number" min="0" max="4" placeholder="" step="0.1" autocomplete="off" value="1" onchange="yv_menu_number(this);dust_size_changed(this);">
+                            <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="particle_option" id="id_input">
+                        <input class="yv_menu yv_menu_text" id="id" type="text" placeholder="" autocomplete="off" value="stone" onchange="id_changed(this);">
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="pos">
+                <div class="header">
+                    <span class="label">Pos</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="pos_inherit">Inherit</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('inherit','pos');">Inherit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('individ','pos');">Individ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pos_input">
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="pos_type">Relative</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);pos_type_changed('');">Absolute</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);pos_type_changed('~');">Relative</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);pos_type_changed('^');">Local</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yv_menu yv_menu_number" onclick="pos_mul_changed(this.firstElementChild);">
+                        <input id="pos_mul" type="number" min="0" max="1000000" placeholder="" step="0.1" autocomplete="off" value="1" onchange="yv_menu_number(this);pos_mul_changed(this);">
+                        <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="delta">
+                <div class="header">
+                    <span class="label">Delta</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="delta_inherit">Inherit</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('inherit','delta');">Inherit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('individ','delta');">Individ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="delta_wrapper">
+                    <div class="delta_input">
+                        <span class="label">X</span>
+                        <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                            <span id="delta_x_type">Absolute</span><span>⏷</span>
+                            <div class="yv_menu_option_wrapper">
+                                <div>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','');">Absolute</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','~');">Relative</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','^');">Local</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                            <span id="delta_x_mode">Constant</span><span>⏷</span>
+                            <div class="yv_menu_option_wrapper">
+                                <div>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Constant</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','x_mul');">OBJ X Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','y_mul');">OBJ Y Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','z_mul');">OBJ Z Mul</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yv_menu yv_menu_number" onclick="delta_value_changed('x',this.firstElementChild);">
+                            <input id="delta_x_value" type="number" min="-1000000" max="1000000" placeholder="" step="0.01" autocomplete="off" value="0" onchange="yv_menu_number(this);delta_value_changed('x',this);">
+                            <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="delta_input">
+                        <span class="label">Y</span>
+                        <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                            <span id="delta_y_type">Absolute</span><span>⏷</span>
+                            <div class="yv_menu_option_wrapper">
+                                <div>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('y','');">Absolute</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('y','~');">Relative</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('y','^');">Local</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                            <span id="delta_y_mode">Constant</span><span>⏷</span>
+                            <div class="yv_menu_option_wrapper">
+                                <div>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','const');">Constant</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','x_mul');">OBJ X Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','y_mul');">OBJ Y Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','z_mul');">OBJ Z Mul</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yv_menu yv_menu_number" onclick="delta_value_changed('y',this.firstElementChild);">
+                            <input id="delta_y_value" type="number" min="-16383" max="16383" placeholder="" step="0.01" autocomplete="off" value="0" onchange="yv_menu_number(this);delta_value_changed('y',this);">
+                            <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="delta_input">
+                        <span class="label">Z</span>
+                        <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                            <span id="delta_z_type">Absolute</span><span>⏷</span>
+                            <div class="yv_menu_option_wrapper">
+                                <div>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('z','');">Absolute</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('z','~');">Relative</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('z','^');">Local</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                            <span id="delta_z_mode">Constant</span><span>⏷</span>
+                            <div class="yv_menu_option_wrapper">
+                                <div>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','const');">Constant</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','x_mul');">OBJ X Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','y_mul');">OBJ Y Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','z_mul');">OBJ Z Mul</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yv_menu yv_menu_number" onclick="delta_value_changed('z',this.firstElementChild);">
+                            <input id="delta_z_value" type="number" min="-16383" max="16383" placeholder="" step="0.01" autocomplete="off" value="0" onchange="yv_menu_number(this);delta_value_changed('z',this);">
+                            <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="speed">
+                <div class="header">
+                    <span class="label">Speed</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="speed_inherit">Inherit</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('inherit','speed');">Inherit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('individ','speed');">Individ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="speed_input">
+                    <div class="yv_menu yv_menu_number" onclick="speed_changed(this.firstElementChild);">
+                        <input id="speed" type="number" min="0" max="16383" placeholder="" step="0.1" autocomplete="off" value="0" onchange="yv_menu_number(this);speed_changed(this);">
+                        <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="count">
+                <div class="header">
+                    <span class="label">Count</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="count_inherit">Inherit</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('inherit','count');">Inherit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('individ','count');">Individ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="count_input">
+                    <div class="yv_menu yv_menu_number" onclick="count_changed(this.firstElementChild);">
+                        <input id="count" type="number" min="0" max="16383" placeholder="" step="1" autocomplete="off" value="1" onchange="yv_menu_number(this);count_changed(this);">
+                        <div class="yv_menu_number_spin"><span>⏶</span><span>⏷</span>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="mode">
+                <div class="header">
+                    <span class="label">Mode</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="mode_inherit">Inherit</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('inherit','mode');">Inherit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('individ','mode');">Individ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mode_input">
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="mode">normal</Name></span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);mode_changed(this);">normal</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);mode_changed(this);">force</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="viewers">
+                <div class="header">
+                    <span class="label">Viewers</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="viewers_inherit">Inherit</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('inherit','viewers');">Inherit</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);inherit_changed('individ','viewers');">Individ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="viewers_input">
+                    <input id="viewers" class="yv_menu yv_menu_text" type="text" placeholder="" autocomplete="off" value="@a" onchange="viewers_changed(this);">
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </main>
+</body>
+
+</html>

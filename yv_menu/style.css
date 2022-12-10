@@ -1,0 +1,281 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --yv_menu_bg_color: #ffffff;
+    --yv_menu_border_color: #bcc3ca;
+    --yv_menu_color: #000;
+
+    --yv_menu_hover_bg_color: #ddedff;
+    --yv_menu_hover_border_color: #c8e3fa;
+
+    --yv_menu_border_width: 1px;
+    --yv_menu_border_radius: 4px;
+}
+
+.yv_menu {
+    border-style: solid;
+    height: 26px;
+    border-width: var(--yv_menu_border_width);
+    border-color: var(--yv_menu_border_color);
+    border-radius: var(--yv_menu_border_radius);
+    color: var(--yv_menu_color);
+    user-select: none;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.yv_menu:hover {
+    background-color: var(--yv_menu_hover_bg_color);
+    border-color: var(--yv_menu_hover_border_color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.yv_menu_select {
+    display: inline-block;
+    background-color: var(--yv_menu_bg_color);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.yv_menu_select span:first-child {
+    position: absolute;
+    padding: 0 10px;
+}
+
+.yv_menu_select span:nth-child(2) {
+    position: relative;
+    left: calc(100% - 19px);
+}
+
+.yv_menu_option_wrapper {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-height: 50vh;
+    margin-top: var(--yv_menu_border_width);
+    overflow: hidden;
+    border-style: solid;
+    border-width: var(--yv_menu_border_width);
+    border-color: var(--yv_menu_border_color);
+    border-radius: var(--yv_menu_border_radius);
+    background-color: var(--yv_menu_border_color);
+    z-index: 2;
+}
+
+.yv_menu_option_wrapper div {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+}
+
+.yv_menu_textarea::-webkit-scrollbar,
+.yv_menu_option_wrapper div::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.yv_menu_textarea::-webkit-scrollbar-thumb,
+.yv_menu_option_wrapper div::-webkit-scrollbar-thumb {
+    background-color: #7e90a8;
+    border-radius: calc(var(--yv_menu_border_radius) / 2);
+}
+
+.yv_menu_textarea::-webkit-scrollbar-track,
+.yv_menu_option_wrapper div::-webkit-scrollbar-track {
+    background-color: var(--yv_menu_border_color);
+}
+
+.yv_menu_option {
+    display: block;
+    background-color: var(--yv_menu_bg_color);
+    text-decoration: none;
+    border-style: solid;
+    padding: 0 19px 0 10px;
+    border-width: var(--yv_menu_border_width) 0 0 0;
+    border-color: var(--yv_menu_border_color);
+    transition: background-color 0.2s, border-color 0.2s, padding 0.2s, color 0.2s;
+}
+
+.yv_menu_option:hover {
+    background-color: var(--yv_menu_hover_bg_color);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-width: var(--yv_menu_border_width) 0;
+    border-color: var(--yv_menu_hover_border_color);
+    transition: background-color 0.2s, border-color 0.2s, padding 0.2s, color 0.2s;
+}
+
+.yv_menu_option:hover+.yv_menu_option,
+.yv_menu_option:first-child {
+    border-top-width: 0;
+}
+
+.yv_menu_option:last-child {
+    border-bottom-width: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+}
+
+.yv_menu_number {
+    display: inline-block;
+    background-color: var(--yv_menu_bg_color);
+    width: 5em;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.yv_menu_number input {
+    background-color: #00000000;
+    font-size: 1em;
+    display: inline-block;
+    height: 100%;
+    width: calc(calc(100% - 22px) - 10px);
+    color: inherit;
+    margin-left: 10px;
+    border-style: none;
+}
+
+.yv_menu_number input:focus {
+    outline: 0;
+}
+
+.yv_menu_number_spin {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 22px;
+    float: right;
+}
+
+.yv_menu_number_spin div {
+    display: block;
+    height: 50%;
+    z-index: 1;
+}
+
+.yv_menu_number span {
+    display: block;
+    position: relative;
+    height: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.yv_menu_number span:nth-child(1) {
+    top: -0.24em;
+}
+
+.yv_menu_number span:nth-child(2) {
+    top: 0.24em;
+}
+
+input:focus {
+    outline: 0;
+}
+
+
+.yv_menu_text {
+    display: inline-block;
+    background-color: var(--yv_menu_bg_color);
+    font-size: 1em;
+    padding: 0 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.yv_menu_textarea {
+    display: inline-block;
+    font-size: 100%;
+    font-family: inherit;
+    background-color: var(--yv_menu_bg_color);
+    font-size: 1em;
+    padding: 0 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.yv_menu_file {
+    display: inline-block;
+    background-color: var(--yv_menu_bg_color);
+    font-size: 1em;
+    padding: 0 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.yv_menu_file span {
+    display: block;
+}
+
+.yv_menu_button {
+    display: inline-block;
+    background-color: var(--yv_menu_bg_color);
+    width: 10em;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.yv_menu_button span {
+    display: inline-block;
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.yv_menu_color div input {
+    position: relative;
+    top: -4px;
+    border: none;
+    background: none;
+    visibility: hidden;
+}
+
+.yv_menu_color div {
+    display: block;
+    position: relative;
+    top: -1px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    margin: 4px auto;
+    background-color: #fff;
+    border-radius: calc(var(--yv_menu_border_radius) / 2);
+}
+
+.yv_menu_color {
+    display: block;
+    width: 80px;
+    background-color: var(--yv_menu_bg_color);
+    border-style: solid;
+    border-width: var(--yv_menu_border_width);
+    border-color: var(--yv_menu_border_color);
+    border-radius: var(--yv_menu_border_radius);
+}
+
+.dust_input {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.yv_menu_icon {
+    display: inline-block;
+    position: absolute;
+}
+
+.yv_menu_icon svg{
+    display: inline-block;
+    position:relative;
+}
