@@ -261,7 +261,7 @@ function pos_type_changed(type) {
 
 function pos_mul_changed(elem) {
     inherit_changed("individ", "pos");
-    if (elem.value < 0 || elem.value === "") {
+    if (elem.value === "") {
         elem.value = 0;
     }
     target_object().pos.mul = elem.value;
@@ -282,7 +282,7 @@ function delta_mode_changed(axis, mode) {
 
 function delta_value_changed(axis, elem) {
     inherit_changed("individ", "delta");
-    if (elem.value < 0 || elem.value === "") {
+    if (elem.value === "") {
         elem.value = 0;
     }
     target_object().delta[axis].value = elem.value;
