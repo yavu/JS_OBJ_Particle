@@ -38,6 +38,41 @@
                     -->
                 </div>
             </div>
+            <div class="outliner">
+                <span class="label">Setting</span>
+                <div class="delta_input">
+                    <span class="label">Language</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="delta_x_type">English</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','');">English</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','~');">Japanese</a>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="label">Coordinate UI</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="delta_x_mode">Text</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Text</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','x_mul');">Symbol</a>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="label">Theme</span>
+                    <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
+                        <span id="delta_x_mode">Dark</span><span>⏷</span>
+                        <div class="yv_menu_option_wrapper">
+                            <div>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Dark</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','x_mul');">Light</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
