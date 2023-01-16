@@ -8,7 +8,7 @@
 
 :root {
     --border_width: 1px;
-    --border_color: #fff;
+    --border_color: #374350;
     --border_radius: 4px;
 
     --yv_menu_bg_color: #2a333d;
@@ -22,16 +22,6 @@
     --yv_menu_border_radius: 4px;
 }
 
-main {
-    display: flex;
-    gap: 32px;
-    margin: 40px auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1492px;
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -40,9 +30,19 @@ main {
 }
 
 body {
-    background-color: #141d27;
-    color: #fff;
+    background-color: #1d2229;
+    color: #dee5eb;
     font-size: 1.2em;
+}
+
+main {
+    display: flex;
+    gap: 32px;
+    margin: 40px auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1492px;
 }
 
 .menu_wrapper {
@@ -239,10 +239,9 @@ body {
     padding: 8px;
     background-color: #2a333d;
     border-style: solid;
-    border-width: var(--yv_menu_border_width);
-    border-color: #fff;
-    border-radius: var(--yv_menu_border_radius);
-    transition: background-color 0.3s, border-color 0.3s;
+    border-width: var(--border_width);
+    border-color: var(--border_color);
+    border-radius: var(--border_radius);
 }
 
 
