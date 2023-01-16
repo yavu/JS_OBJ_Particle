@@ -383,3 +383,15 @@ function output() {
     }
     console.log(result);
 }
+
+function export_clipboard() {
+    return text => {
+        document.addEventListener('copy', e => {
+            e.preventDefault();
+            e.clipboardData?.setData('text/plain', text);
+            document.removeEventListener('copy', listener);
+        });
+        document.execCommand('copy');
+    }
+}
+
