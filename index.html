@@ -38,12 +38,12 @@
                     -->
                 </div>
             </div>
-            <div class="outliner">
-                <span class="label">Setting</span>
-                <div class="delta_input">
-                    <span class="label">Language</span>
+            <div class="settings">
+                <span class="label">Settings</span>
+                <div class="settings_input">
+                    <span class="label" id="setting_1_label">Language</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
-                        <span id="delta_x_type">English</span><span>⏷</span>
+                        <span id="lang_setting">English</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
                                 <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','');">English</a>
@@ -51,9 +51,9 @@
                             </div>
                         </div>
                     </div>
-                    <span class="label">Coordinate UI</span>
+                    <span class="label" id="setting_2_label">Coordinates UI</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
-                        <span id="delta_x_mode">Text</span><span>⏷</span>
+                        <span id="coordinates_setting">Text</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
                                 <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Text</a>
@@ -61,9 +61,9 @@
                             </div>
                         </div>
                     </div>
-                    <span class="label">Theme</span>
+                    <span class="label" id="setting_3_label">Theme</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
-                        <span id="delta_x_mode">Dark</span><span>⏷</span>
+                        <span id="theme_setting">Dark</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
                                 <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Dark</a>

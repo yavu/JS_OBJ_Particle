@@ -69,7 +69,8 @@ main {
 .export,
 .file,
 .preview,
-.outliner {
+.outliner,
+.settings {
     display: inline-flex;
     flex-direction: column;
     border-style: solid;
@@ -91,7 +92,9 @@ main {
     width:466px;
 }
 
-
+.settings {
+    height: auto;
+}
 
 
 
@@ -109,7 +112,8 @@ main {
 .mode_input,
 .viewers_input,
 .preview_wrapper,
-.outliner_wrapper {
+.outliner_wrapper,
+.settings_input {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -134,6 +138,7 @@ main {
     border-color: #435669;
     border-radius: var(--border_radius);
 }
+
 
 
 .speed_input .yv_menu_number,
@@ -191,6 +196,11 @@ main {
     padding: 0 5px;
 }
 
+#setting_2_label,
+#setting_3_label {
+    padding-top: 4px;
+}
+
 .yv_menu_option_wrapper {
     border-color: var(--yv_menu_hover_border_color);
 }
@@ -221,6 +231,7 @@ main {
 
 .left {
     width: 266px;
+    gap: 20px;
 }
 
 .center {
@@ -360,4 +371,8 @@ main {
 .outliner_object span {
     padding-left: 35px;
     width: calc(100% - 45px);
+}
+
+.settings_input .yv_menu .yv_menu_option_wrapper {
+    width: 230px;
 }

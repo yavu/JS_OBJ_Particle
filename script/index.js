@@ -14,8 +14,8 @@ let lang = {
         "y_mul": "OBJ Y Mul",
         "z_mul": "OBJ Z Mul"
     },
-    "inherit": "Inherit",
-    "individ": "Individ"
+    inherit: "Inherit",
+    individ: "Individ"
 }
 
 let import_data = {
@@ -145,6 +145,7 @@ function inherit_changed(mode, option) {
             target_object().inheritance.push(option);
             ui_update();
         }
+        document.getElementById(`${option}_inherit`).textContent = lang.inherit;
         document.getElementById(`${option}_inherit`).parentElement.parentElement.parentElement.style.color = "#489eff";
         document.getElementById(`${option}_inherit`).parentElement.parentElement.parentElement.style.borderColor = "#2373cc";
     }
@@ -153,6 +154,7 @@ function inherit_changed(mode, option) {
             target_object().inheritance.splice(import_data.object[select_object].inheritance.indexOf(option), 1);
             target_object()[option] = JSON.parse(JSON.stringify(import_data.loot[option]));
         }
+        document.getElementById(`${option}_inherit`).textContent = lang.individ;
         document.getElementById(`${option}_inherit`).parentElement.parentElement.parentElement.style.color = "#ffffff";
         document.getElementById(`${option}_inherit`).parentElement.parentElement.parentElement.style.borderColor = "var(--border_color)";
     }
@@ -180,14 +182,14 @@ function ui_update() {
     document.getElementById("dust_transition_color2").style.backgroundColor = inherit_check("particle").color2;
     document.getElementById("dust_size").value = inherit_check("particle").size;
     document.getElementById("dust_transition_size").value = inherit_check("particle").size;
-    document.getElementById("pos_type").textContent = lang.axis_type[inherit_check("pos").type];
+    document.getElementById("pos_type").textContent = lang.axis_type[`${inherit_check("pos").type}`];
     document.getElementById("pos_mul").value = inherit_check("pos").mul;
-    document.getElementById("delta_x_type").textContent = lang.axis_type[inherit_check("delta").x.type];
-    document.getElementById("delta_y_type").textContent = lang.axis_type[inherit_check("delta").y.type];
-    document.getElementById("delta_z_type").textContent = lang.axis_type[inherit_check("delta").z.type];
-    document.getElementById("delta_x_mode").textContent = lang.delta_mode[inherit_check("delta").x.mode];
-    document.getElementById("delta_y_mode").textContent = lang.delta_mode[inherit_check("delta").y.mode];
-    document.getElementById("delta_z_mode").textContent = lang.delta_mode[inherit_check("delta").z.mode];
+    document.getElementById("delta_x_type").textContent = lang.axis_type[`${inherit_check("delta").x.type}`];
+    document.getElementById("delta_y_type").textContent = lang.axis_type[`${inherit_check("delta").y.type}`];
+    document.getElementById("delta_z_type").textContent = lang.axis_type[`${inherit_check("delta").z.type}`];
+    document.getElementById("delta_x_mode").textContent = lang.delta_mode[`${inherit_check("delta").x.mode}`];
+    document.getElementById("delta_y_mode").textContent = lang.delta_mode[`${inherit_check("delta").y.mode}`];
+    document.getElementById("delta_z_mode").textContent = lang.delta_mode[`${inherit_check("delta").z.mode}`];
     document.getElementById("delta_x_value").value = inherit_check("delta").x.value;
     document.getElementById("delta_y_value").value = inherit_check("delta").y.value;
     document.getElementById("delta_z_value").value = inherit_check("delta").z.value;
