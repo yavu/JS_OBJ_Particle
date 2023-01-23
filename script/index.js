@@ -2,6 +2,7 @@ addEventListener('load', () => {
 
 });
 
+/*
 let lang = {
     axis_type: {
         "": "Absolute",
@@ -16,7 +17,7 @@ let lang = {
     },
     inherit: "Inherit",
     individ: "Individ"
-}
+}*/
 
 let import_data = {
     file_name: "",
