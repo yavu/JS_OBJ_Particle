@@ -58,6 +58,12 @@ main {
     padding-top: 2px;
 }
 
+.yv_menu_select span:first-child,
+.yv_menu_file span:first-child,
+.yv_menu_button span:first-child {
+    height: 21.6px;
+    line-height: 21.6px;
+}
 
 .delta,
 .particle,
@@ -172,7 +178,8 @@ main {
 
 
 .file_input .yv_menu_file {
-    width: 144px;
+    /*width: 144px;*/
+    width: 100%;
 }
 
 .export_button .yv_menu_button {
@@ -194,6 +201,8 @@ main {
 
 .label {
     padding: 0 5px;
+    height: 21.6px;
+    line-height: 21.6px;
 }
 
 #setting_2_label,
@@ -266,11 +275,11 @@ main {
     color: inherit;
 }
 
-.yv_menu_number span:nth-child(1) {
+.yv_menu_number_spin span:nth-child(1) {
     top: -8px;
 }
 
-.yv_menu_number span:nth-child(2) {
+.yv_menu_number_spin span:nth-child(2) {
     top: 2px;
 }
 
@@ -376,3 +385,5 @@ main {
 .settings_input .yv_menu .yv_menu_option_wrapper {
     width: 230px;
 }
+
+

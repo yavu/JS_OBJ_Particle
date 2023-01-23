@@ -20,7 +20,7 @@
 
         <div class="left">
             <div class="outliner">
-                <span class="label">Outliner</span>
+                <span class="label" id="outliner_label">Outliner</span>
                 <div class="outliner_wrapper" id="outliner">
                     <!--
                         <a class="yv_menu yv_menu_button outliner_file" onclick="">
@@ -39,15 +39,15 @@
                 </div>
             </div>
             <div class="settings">
-                <span class="label">Settings</span>
+                <span class="label" id="settings_label">Settings</span>
                 <div class="settings_input">
                     <span class="label" id="setting_1_label">Language</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="lang_setting">English</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','');">English</a>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_type_changed('x','~');">Japanese</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);lang_en();">English</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);lang_ja();">Japanese</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <span class="label" id="setting_3_label">Theme</span>
+                    <span class="label" id="setting_3_label">UI Theme</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="theme_setting">Dark</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
@@ -79,7 +79,7 @@
 
         <div class="center">
             <div class="file">
-                <span class="label">Import</span>
+                <span class="label" id="import_label">Import</span>
                 <div class="file_input">
                     <label class="yv_menu yv_menu_file">
                         <span>Import OBJ</span>
@@ -89,7 +89,7 @@
             </div>
 
             <div class="preview">
-                <span class="label">Preview</span>
+                <span class="label" id="preview_label">Preview</span>
                 <div class="preview_wrapper">
                     <!--
                     <textarea id="text_preview" class="yv_menu yv_menu_textarea" id="output" name="textarea" disabled></textarea>
@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
-                        <span>Command</span><span>⏷</span>
+                        <span id="view_mode">Command</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
                                 <a class="yv_menu_option" onclick="yv_menu_option(this);">Command</a>
@@ -111,7 +111,7 @@
             </div>
 
             <div class="export">
-                <span class="label">Export</span>
+                <span class="label" id="export_label">Export</span>
                 <div class="export_button">
                     <a class="yv_menu yv_menu_button" onclick=""><span>mcfunction</span></a>
                     <a class="yv_menu yv_menu_button" onclick="export_clipboard();"><span>clipboard</span></a>
@@ -128,7 +128,7 @@
 
             <div class="particle">
                 <div class="header">
-                    <span class="label">Particle</span>
+                    <span class="label" id="particle_label">Particle</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="particle_inherit">Inherit</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
@@ -285,7 +285,7 @@
 
             <div class="pos">
                 <div class="header">
-                    <span class="label">Pos</span>
+                    <span class="label" id="pos_label">Pos</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="pos_inherit">Inherit</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
@@ -320,7 +320,7 @@
 
             <div class="delta">
                 <div class="header">
-                    <span class="label">Delta</span>
+                    <span class="label" id="delta_label">Delta</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="delta_inherit">Inherit</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
@@ -333,7 +333,7 @@
                 </div>
                 <div class="delta_wrapper">
                     <div class="delta_input">
-                        <span class="label">X</span>
+                        <span class="label" id="delta_x_label">X</span>
                         <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                             <span id="delta_x_type">Absolute</span><span>⏷</span>
                             <div class="yv_menu_option_wrapper">
@@ -349,9 +349,9 @@
                             <div class="yv_menu_option_wrapper">
                                 <div>
                                     <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Constant</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','x_mul');">OBJ X Mul</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','y_mul');">OBJ Y Mul</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','z_mul');">OBJ Z Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','x_mul');">Pos X Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','y_mul');">Pos Y Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','z_mul');">Pos Z Mul</a>
                                 </div>
                             </div>
                         </div>
@@ -364,7 +364,7 @@
                         </div>
                     </div>
                     <div class="delta_input">
-                        <span class="label">Y</span>
+                        <span class="label" id="delta_y_label">Y</span>
                         <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                             <span id="delta_y_type">Absolute</span><span>⏷</span>
                             <div class="yv_menu_option_wrapper">
@@ -380,9 +380,9 @@
                             <div class="yv_menu_option_wrapper">
                                 <div>
                                     <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','const');">Constant</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','x_mul');">OBJ X Mul</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','y_mul');">OBJ Y Mul</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','z_mul');">OBJ Z Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','x_mul');">Pos X Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','y_mul');">Pos Y Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('y','z_mul');">Pos Z Mul</a>
                                 </div>
                             </div>
                         </div>
@@ -395,7 +395,7 @@
                         </div>
                     </div>
                     <div class="delta_input">
-                        <span class="label">Z</span>
+                        <span class="label" id="delta_z_label">Z</span>
                         <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                             <span id="delta_z_type">Absolute</span><span>⏷</span>
                             <div class="yv_menu_option_wrapper">
@@ -411,9 +411,9 @@
                             <div class="yv_menu_option_wrapper">
                                 <div>
                                     <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','const');">Constant</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','x_mul');">OBJ X Mul</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','y_mul');">OBJ Y Mul</a>
-                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','z_mul');">OBJ Z Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','x_mul');">Pos X Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','y_mul');">Pos Y Mul</a>
+                                    <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('z','z_mul');">Pos Z Mul</a>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +432,7 @@
 
             <div class="speed">
                 <div class="header">
-                    <span class="label">Speed</span>
+                    <span class="label" id="speed_label">Speed</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="speed_inherit">Inherit</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
@@ -456,7 +456,7 @@
 
             <div class="count">
                 <div class="header">
-                    <span class="label">Count</span>
+                    <span class="label" id="count_label">Count</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="count_inherit">Inherit</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
@@ -482,7 +482,7 @@
 
             <div class="mode">
                 <div class="header">
-                    <span class="label">Mode</span>
+                    <span class="label" id="mode_label">Mode</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="mode_inherit">Inherit</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
@@ -508,7 +508,7 @@
 
             <div class="viewers">
                 <div class="header">
-                    <span class="label">Viewers</span>
+                    <span class="label" id="viewers_label">Viewers</span>
                     <div class="yv_menu yv_menu_select" onclick="yv_menu_select(this);">
                         <span id="viewers_inherit">Inherit</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
