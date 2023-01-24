@@ -24,7 +24,7 @@ let lang = {
     },
     coordinates: {
         "text": "Text",
-        "sigh": "Sign",
+        "sign": "Sign",
     },
     theme: {
         "dark": "Dark",
@@ -43,6 +43,9 @@ let lang = {
     particle: "Particle",
     pos: "Position",
     delta: "Delta",
+    delta_x: "X",
+    delta_y: "Y",
+    delta_z: "Z",
     speed: "Speed",
     count: "Count",
     mode: "Mode",
@@ -85,17 +88,23 @@ function set_ui_text() {
     document.getElementById("export_label").textContent = lang.export;
     button_elem(document.getElementById("export_label"), 0).textContent = lang.export_file;
     button_elem(document.getElementById("export_label"), 1).textContent = lang.export_clipboard;
-    
+
     document.getElementById("particle_label").textContent = lang.particle;
+
     document.getElementById("pos_label").textContent = lang.pos;
+    document.getElementById("pos_type").textContent = lang.axis_type[`${inherit_check("pos").type}`];
+    option_elem(document.getElementById("pos_type"), 0).textContent = lang.axis_type[""];
+    option_elem(document.getElementById("pos_type"), 1).textContent = lang.axis_type["~"];
+    option_elem(document.getElementById("pos_type"), 2).textContent = lang.axis_type["^"];
+
     document.getElementById("delta_label").textContent = lang.delta;
 
     function delta_label_change(axis) {
         document.getElementById(`delta_${axis}_type`).textContent = lang.axis_type[`${inherit_check("delta")[axis].type}`];
         option_elem(document.getElementById(`delta_${axis}_type`), 0).textContent = lang.axis_type[""];
-        option_elem(document.getElementById(`delta_${axis}_type`), 1).textContent = lang.axis_type["^"];
-        option_elem(document.getElementById(`delta_${axis}_type`), 2).textContent = lang.axis_type["~"];
-        document.getElementById(`delta_${axis}_mode`).textContent = lang.axis_type[`${inherit_check("delta")[axis].mode}`];
+        option_elem(document.getElementById(`delta_${axis}_type`), 1).textContent = lang.axis_type["~"];
+        option_elem(document.getElementById(`delta_${axis}_type`), 2).textContent = lang.axis_type["^"];
+        document.getElementById(`delta_${axis}_mode`).textContent = lang.delta_mode[`${inherit_check("delta")[axis].mode}`];
         option_elem(document.getElementById(`delta_${axis}_mode`), 0).textContent = lang.delta_mode["const"];
         option_elem(document.getElementById(`delta_${axis}_mode`), 1).textContent = lang.delta_mode["x_mul"];
         option_elem(document.getElementById(`delta_${axis}_mode`), 2).textContent = lang.delta_mode["y_mul"];
@@ -122,73 +131,128 @@ function button_elem(elem, i) {
     return elem.nextElementSibling.children[i].firstElementChild;
 }
 
-function lang_ja() {
-
+function change_lang(language) {
+    if (language == "ja") {
+        lang = {
+            axis_type: {
+                "": "絶対座標",
+                "~": "相対座標",
+                "^": "ローカル"
+            },
+            delta_mode: {
+                "const": "定数",
+                "x_mul": "Ｘ座標倍率",
+                "y_mul": "Ｙ座標倍率",
+                "z_mul": "Ｚ座標倍率"
+            },
+            inherit: "継承",
+            individ: "個別",
+            outliner: "アウトライナー",
+            settings: "設定",
+            setting_language: "言語",
+            setting_coordinates: "座標系の表示",
+            setting_theme: "ＵＩテーマ",
+            lang_setting: {
+                "en": "英語",
+                "ja": "日本語"
+            },
+            coordinates: {
+                "text": "テキスト",
+                "sign": "記号"
+            },
+            theme: {
+                "dark": "ダーク",
+                "light": "ライト"
+            },
+            import: "インポート",
+            open: "OBJファイルを開く",
+            preview: "プレビュー",
+            preview_mode: {
+                "command": "コマンド",
+                "3d_view": "3Dビュー"
+            },
+            export: "エクスポート",
+            export_file: "mcfunctionファイルで保存",
+            export_clipboard: "クリップボードにコピー",
+            particle: "パーティクル",
+            pos: "位置",
+            delta: "偏差",
+            delta_x: "Ｘ軸",
+            delta_y: "Ｙ軸",
+            delta_z: "Ｚ軸",
+            speed: "速度",
+            count: "総数",
+            mode: "モード",
+            viewers: "表示者"
+        }
+        settings.language = "ja";
+    }
+    else {
+        lang = {
+            axis_type: {
+                "": "Absolute",
+                "~": "Relative",
+                "^": "Local"
+            },
+            delta_mode: {
+                "const": "Constant",
+                "x_mul": "Pos X Mul",
+                "y_mul": "Pos Y Mul",
+                "z_mul": "Pos Z Mul"
+            },
+            inherit: "Inherit",
+            individ: "Individ",
+            outliner: "Outliner",
+            settings: "Settings",
+            setting_language: "Language",
+            setting_coordinates: "Coordinates UI",
+            setting_theme: "UI Theme",
+            lang_setting: {
+                "en": "English",
+                "ja": "Japanese",
+            },
+            coordinates: {
+                "text": "Text",
+                "sign": "Sign",
+            },
+            theme: {
+                "dark": "Dark",
+                "light": "Light",
+            },
+            import: "Import",
+            open: "Open OBJ file",
+            preview: "Preview",
+            preview_mode: {
+                "command": "Command",
+                "3d_view": "3D View"
+            },
+            export: "Export",
+            export_file: "mcfunction",
+            export_clipboard: "clipboard",
+            particle: "Particle",
+            pos: "Position",
+            delta: "Delta",
+            delta_x: "X",
+            delta_y: "Y",
+            delta_z: "Z",
+            speed: "Speed",
+            count: "Count",
+            mode: "Mode",
+            viewers: "Viewers"
+        }
+        settings.language = "en";
+    }
+    if (settings.coordinates == "sign") {
+        lang.axis_type = {
+            "": "　",
+            "~": "～",
+            "^": "＾"
+        }
+    }
+    set_ui_text();
 }
 
-/*
-function lang_ja() {
-    document.getElementById("outliner_label").textContent = "アウトライナー";
-    document.getElementById("settings_label").textContent = "設定";
-    document.getElementById("setting_1_label").textContent = "言語";
-    document.getElementById("setting_2_label").textContent = "座標系の表示";
-    document.getElementById("setting_3_label").textContent = "UIテーマ";
-    document.getElementById("lang_setting").textContent = "日本語";
-    option_elem(document.getElementById("lang_setting"), 0).textContent = "英語";
-    option_elem(document.getElementById("lang_setting"), 1).textContent = "日本語";
-
-    if (document.getElementById("coordinates_setting").textContent == "テキスト") { document.getElementById("coordinates_setting").textContent = "テキスト"; }
-    else { document.getElementById("coordinates_setting").textContent = "記号"; }
-    option_elem(document.getElementById("coordinates_setting"), 0).textContent = "テキスト";
-    option_elem(document.getElementById("coordinates_setting"), 1).textContent = "記号";
-
-    if (document.getElementById("theme_setting").textContent == "Dark") { document.getElementById("theme_setting").textContent = "ダーク"; }
-    else { document.getElementById("theme_setting").textContent = "ライト"; }
-    option_elem(document.getElementById("theme_setting"), 0).textContent = "ダーク";
-    option_elem(document.getElementById("theme_setting"), 1).textContent = "ライト";
-
-    document.getElementById("import_label").textContent = "インポート";
-    button_elem(document.getElementById("import_label"), 0).textContent = "OBJファイルを開く";
-
-    document.getElementById("preview_label").textContent = "プレビュー";
-    if (document.getElementById("view_mode").textContent == "Command") { document.getElementById("view_mode").textContent = "コマンド"; }
-    else { document.getElementById("view_mode").textContent = "3Dビュー"; }
-    option_elem(document.getElementById("view_mode"), 0).textContent = "コマンド";
-    option_elem(document.getElementById("view_mode"), 1).textContent = "3Dビュー";
-
-    document.getElementById("export_label").textContent = "エクスポート";
-    button_elem(document.getElementById("export_label"), 0).textContent = "mcfunctionファイルで保存";
-    button_elem(document.getElementById("export_label"), 1).textContent = "クリップボードにコピー";
-    
-    document.getElementById("particle_label").textContent = "パーティクル";
-    document.getElementById("pos_label").textContent = "位置";
-    document.getElementById("delta_label").textContent = "偏差";
-
-    function delta_label_change(axis) {
-        if (document.getElementById(`delta_${axis}_type`).textContent == "Absolute") { document.getElementById(`delta_${axis}_type`).textContent = "絶対座標"; }
-        else if (document.getElementById(`delta_${axis}_type`).textContent == "Relative") { document.getElementById(`delta_${axis}_type`).textContent = "相対座標"; }
-        else { document.getElementById(`delta_${axis}_type`).textContent = "ローカル"; }
-        option_elem(document.getElementById(`delta_${axis}_type`), 0).textContent = "絶対座標";
-        option_elem(document.getElementById(`delta_${axis}_type`), 1).textContent = "相対座標";
-        option_elem(document.getElementById(`delta_${axis}_type`), 2).textContent = "ローカル";
-        if (document.getElementById(`delta_${axis}_mode`).textContent == "Constant") { document.getElementById(`delta_${axis}_mode`).textContent = "定数"; }
-        else if (document.getElementById(`delta_${axis}_mode`).textContent == "Pos X Mul") { document.getElementById(`delta_${axis}_mode`).textContent = "Ｘ座標倍率"; }
-        else if (document.getElementById(`delta_${axis}_mode`).textContent == "Pos Y Mul") { document.getElementById(`delta_${axis}_mode`).textContent = "Ｙ座標倍率"; }
-        else { document.getElementById(`delta_${axis}_mode`).textContent = "Ｚ座標倍率"; }
-        option_elem(document.getElementById(`delta_${axis}_mode`), 0).textContent = "定数";
-        option_elem(document.getElementById(`delta_${axis}_mode`), 1).textContent = "Ｘ座標倍率";
-        option_elem(document.getElementById(`delta_${axis}_mode`), 2).textContent = "Ｙ座標倍率";
-        option_elem(document.getElementById(`delta_${axis}_mode`), 3).textContent = "Ｚ座標倍率";
-    }
-    document.getElementById("delta_x_label").textContent = "Ｘ軸";
-    delta_label_change("x");
-    document.getElementById("delta_y_label").textContent = "Ｙ軸";
-    delta_label_change("y");
-    document.getElementById("delta_z_label").textContent = "Ｚ軸";
-    delta_label_change("z");
-
-    document.getElementById("speed_label").textContent = "速度";
-    document.getElementById("count_label").textContent = "総数";
-    document.getElementById("mode_label").textContent = "モード";
-    document.getElementById("viewers_label").textContent = "表示者";
-}*/
+function coordinates_ui(type) {
+    settings.coordinates = type;
+    change_lang(settings.language);
+}

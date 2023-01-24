@@ -47,8 +47,8 @@
                         <span id="lang_setting">English</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);lang_en();">English</a>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);lang_ja();">Japanese</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);change_lang('en');">English</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);change_lang('ja');">Japanese</a>
                             </div>
                         </div>
                     </div>
@@ -57,8 +57,8 @@
                         <span id="coordinates_setting">Text</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Text</a>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','x_mul');">Symbol</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);coordinates_ui('text');">Text</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);coordinates_ui('sign');">Symbol</a>
                             </div>
                         </div>
                     </div>
@@ -67,8 +67,8 @@
                         <span id="theme_setting">Dark</span><span>⏷</span>
                         <div class="yv_menu_option_wrapper">
                             <div>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','const');">Dark</a>
-                                <a class="yv_menu_option" onclick="yv_menu_option(this);delta_mode_changed('x','x_mul');">Light</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);">Dark</a>
+                                <a class="yv_menu_option" onclick="yv_menu_option(this);">Light</a>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                 <span class="label" id="import_label">Import</span>
                 <div class="file_input">
                     <label class="yv_menu yv_menu_file">
-                        <span>Import OBJ</span>
+                        <span>Open OBJ file</span>
                         <input type="file" onchange="file_changed(this);" />
                     </label>
                 </div>

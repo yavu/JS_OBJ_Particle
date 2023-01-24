@@ -2,23 +2,6 @@ addEventListener('load', () => {
 
 });
 
-/*
-let lang = {
-    axis_type: {
-        "": "Absolute",
-        "~": "Relative",
-        "^": "Local"
-    },
-    delta_mode: {
-        "const": "Constant",
-        "x_mul": "Pos X Mul",
-        "y_mul": "Pos Y Mul",
-        "z_mul": "Pos Z Mul"
-    },
-    inherit: "Inherit",
-    individ: "Individ"
-}*/
-
 let import_data = {
     file_name: "",
     loot: {},
@@ -387,13 +370,13 @@ function output() {
     console.log(result);
 }
 
-function export_clipboard() {
-    return text => {
-        document.addEventListener('copy', e => {
-            e.preventDefault();
-            e.clipboardData?.setData('text/plain', text);
-            document.removeEventListener('copy', listener);
-        });
-        document.execCommand('copy');
-    }
-}
+//function export_clipboard() {
+//    return text => {
+//        document.addEventListener('copy', e => {
+//            e.preventDefault();
+//            e.clipboardData?.setData('text/plain', text);
+//            document.removeEventListener('copy', listener);
+//        });
+//        document.execCommand('copy');
+//    }
+//}
